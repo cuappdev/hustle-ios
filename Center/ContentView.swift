@@ -16,7 +16,7 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
             Button("Sign out"){
-                try AuthManager.shared.signOut()
+                AuthManager.shared.signOut()
             }
         }
         .padding()
