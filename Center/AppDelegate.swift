@@ -1,5 +1,5 @@
 //
-//  Untitled.swift
+//  AppDelegate.swift
 //  Center
 //
 //  Created by Jidong Zheng on 9/26/25.
@@ -13,6 +13,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
+        
+        // grab client ID from firebase app
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            print("Warning: Firebase client ID not found")
+            return true
+        }
+        
+        let configuration = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = configuration
         
         return true
     }

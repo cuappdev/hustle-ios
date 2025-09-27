@@ -9,11 +9,10 @@ import SwiftUI
 
 struct MainView: View {
     
-    @Environment(AuthManager.self) private var authManager
     
     var body: some View {
         Group {
-            switch authManager.authState {
+            switch AuthManager.shared.authState {
             case .undefined:
                 ProgressView()
             case .authenticated:
@@ -23,7 +22,7 @@ struct MainView: View {
             }
         }
         .task {
-            await authManager.startListeningToAuthState()
+            await AuthManager.shared.startListeningToAuthState()
         }
         
     }

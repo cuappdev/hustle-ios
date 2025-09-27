@@ -14,44 +14,90 @@ import GoogleSignIn
 @MainActor
 class AuthManager {
     
+    // MARK: - Singleton Instance
+    static let shared = AuthManager()
+    
+    // MARK: - Properties
     var authState: AuthState = .undefined
+    var user: FirebaseAuth.User?
     private var authStateListener: AuthStateDidChangeListenerHandle?
+    
+    
+    // MARK: Init
+    private init() {}
     
     func startListeningToAuthState() async {
         authStateListener = Auth.auth().addStateDidChangeListener {_, user in
             self.authState = user != nil ? .authenticated : .notAuthenticated
+            self.user = user
         }
     }
     
     func signIn() async throws {
-        guard let rootViewController = UIApplication.shared.firstKeyWindow?.rootViewController else { return }
-        
-        // grab client ID from firebase app
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        
-        let configuration = GIDConfiguration(clientID: clientID)
-        GIDSignIn.sharedInstance.configuration = configuration
-        
-        let result = try await GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController)
-        
-        // Get credential for firebase
-        guard let idToken = result.user.idToken?.tokenString else { return }
-        let accessToken = result.user.accessToken.tokenString
-        let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
-        
-        try await Auth.auth().signIn(with: credentials)
+        guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else {
+            throw GoogleAuthError.noPresentingViewController
+        }
+    
+        let GIDSignInResult = try await GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController)
+        try await getCredentialsFromGoogleUser(user: GIDSignInResult.user)
     }
     
-    func signOut() throws {
-        try Auth.auth().signOut()
+    func getCredentialsFromGoogleUser(user: GIDGoogleUser) async throws {
+        
+        guard let idToken = user.idToken?.tokenString else {
+            throw GoogleAuthError.noIDToken
+        }
+        let accessToken = user.accessToken.tokenString
+        
+        let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+        let authResult = try await Auth.auth().signIn(with: credentials)
+        
+        self.user = authResult.user
+    }
+    
+    func refreshSignInIfNeeded() async throws {
+        // Restore previous sign-in
+        if GIDSignIn.sharedInstance.currentUser == nil {
+            try await GIDSignIn.sharedInstance.restorePreviousSignIn()
+        }
+        
+        // Get curret user or throw error
+        guard let currentUser = GIDSignIn.sharedInstance.currentUser else {
+            throw GoogleAuthError.noUserSignedIn
+        }
+        
+        // Refresh tokens
+        try await currentUser.refreshTokensIfNeeded()
+        try await getCredentialsFromGoogleUser(user: currentUser)
+        
+    }
+    
+    func signOut() {
+        GIDSignIn.sharedInstance.signOut()
+        
+        do{
+            try Auth.auth().signOut()
+        } catch {
+            print("Error signing out: \(error.localizedDescription)")
+        }
+        
+        self.user = nil
     }
 }
 
-extension UIApplication {
-    var firstKeyWindow: UIWindow? {
-        return UIApplication.shared.connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .flatMap { $0.windows }
-            .first { $0.isKeyWindow }
+enum GoogleAuthError: Error, LocalizedError {
+    case noUserSignedIn
+    case noPresentingViewController
+    case noIDToken
+    
+    var errorDescription: String? {
+        switch self {
+        case .noUserSignedIn:
+            return "No user is currently signed in"
+        case .noPresentingViewController:
+            return "Unable to present sign-in interface"
+        case .noIDToken:
+            return "Google ID token not available"
+        }
     }
 }

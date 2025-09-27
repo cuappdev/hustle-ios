@@ -11,8 +11,6 @@ import GoogleSignInSwift
 
 struct AuthView: View {
     
-    @Environment(AuthManager.self) private var authManager
-    
     var body: some View {
         VStack {
             Spacer()
@@ -32,7 +30,7 @@ struct AuthView: View {
     func signIn() {
         Task {
             do {
-                try await authManager.signIn()
+                try await AuthManager.shared.signIn()
             } catch {
                 print(error.localizedDescription)
             }

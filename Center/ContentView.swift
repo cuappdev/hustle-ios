@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @Environment(AuthManager.self) private var authManager
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -17,18 +16,14 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
             Button("Sign out"){
-                signOut()
+                do {
+                    try AuthManager.shared.signOut()
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
         }
         .padding()
-    }
-    
-    func signOut() {
-        do {
-            try authManager.signOut()
-        } catch {
-            print(error.localizedDescription)
-        }
     }
 }
 
