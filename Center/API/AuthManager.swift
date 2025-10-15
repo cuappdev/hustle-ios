@@ -42,10 +42,6 @@ class AuthManager {
         try await getCredentialsFromGoogleUser(user: GIDSignInResult.user)
     }
     
-    func getFCMToken() async -> String? {
-        return await FirebaseNotificationService.shared.getFCMRegToken()
-    }
-    
     func getCredentialsFromGoogleUser(user: GIDGoogleUser) async throws {
         
         guard let idToken = user.idToken?.tokenString else {
@@ -57,12 +53,6 @@ class AuthManager {
         let authResult = try await Auth.auth().signIn(with: credentials)
         
         self.user = authResult.user
-        
-        // Get FCM token after successful auth
-        if let fcmToken = await getFCMToken() {
-            // TODO: send to backend
-            print("FCM Token: \(fcmToken)")
-        }
     }
     
     func refreshSignInIfNeeded() async throws {
