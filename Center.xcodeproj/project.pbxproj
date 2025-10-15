@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0764842E8DCE1E00EB6F56 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1C0764832E8DCE1E00EB6F56 /* ComposableArchitecture */; };
 		D0DDB57C2E722AA000165825 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D0DDB57B2E722AA000165825 /* FirebaseAnalytics */; };
 		D0DDB57E2E722AA000165825 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D0DDB57D2E722AA000165825 /* FirebaseAuth */; };
 		D0DDB5802E722AA000165825 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = D0DDB57F2E722AA000165825 /* FirebaseCore */; };
@@ -23,7 +24,7 @@
 		1C9113B42E7B681700B14CFB /* Exceptions for "Center" folder in "Center" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				App/Info.plist,
+				Info.plist,
 				Supporting/Keys.xcconfig,
 			);
 			target = D0DDB55D2E7227AB00165825 /* Center */;
@@ -48,6 +49,7 @@
 			files = (
 				D0DDB5852E722ABB00165825 /* GoogleSignIn in Frameworks */,
 				D0DDB5822E722AA000165825 /* FirebaseMessaging in Frameworks */,
+				1C0764842E8DCE1E00EB6F56 /* ComposableArchitecture in Frameworks */,
 				D0DDB57C2E722AA000165825 /* FirebaseAnalytics in Frameworks */,
 				D0DDB5872E722ABB00165825 /* GoogleSignInSwift in Frameworks */,
 				D0DDB5802E722AA000165825 /* FirebaseCore in Frameworks */,
@@ -100,6 +102,7 @@
 				D0DDB5812E722AA000165825 /* FirebaseMessaging */,
 				D0DDB5842E722ABB00165825 /* GoogleSignIn */,
 				D0DDB5862E722ABB00165825 /* GoogleSignInSwift */,
+				1C0764832E8DCE1E00EB6F56 /* ComposableArchitecture */,
 			);
 			productName = Center;
 			productReference = D0DDB55E2E7227AB00165825 /* Center.app */;
@@ -132,6 +135,7 @@
 			packageReferences = (
 				D0DDB57A2E722AA000165825 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				D0DDB5832E722ABB00165825 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				1C0764822E8DCE1E00EB6F56 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D0DDB55F2E7227AB00165825 /* Products */;
@@ -369,6 +373,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1C0764822E8DCE1E00EB6F56 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.22.3;
+			};
+		};
 		D0DDB57A2E722AA000165825 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -388,6 +400,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1C0764832E8DCE1E00EB6F56 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C0764822E8DCE1E00EB6F56 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
 		D0DDB57B2E722AA000165825 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D0DDB57A2E722AA000165825 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

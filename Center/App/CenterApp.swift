@@ -7,7 +7,9 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseMessaging
 import GoogleSignIn
+
 
 @main
 struct CenterApp: App {
