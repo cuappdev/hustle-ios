@@ -5,30 +5,26 @@
 //  Created by Jidong Zheng on 9/26/25.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 struct MainView: View {
-    
+    @Bindable var store: StoreOf<AppFeature>
     
     var body: some View {
         Group {
-            switch AuthManager.shared.authState {
+            switch store.auth.authState{
             case .undefined:
                 ProgressView()
             case .authenticated:
-                ContentView()
+                ContentView(store: store.scope(state: \.auth, action: \.auth))
             case .notAuthenticated:
-                AuthView()
+                AuthView(store: store.scope(state: \.auth, action: \.auth))
             }
         }
         .task {
-            await AuthManager.shared.startListeningToAuthState()
+            store.send(.onAppear)
         }
         
     }
 }
-
-#Preview {
-    ContentView()
-}
-

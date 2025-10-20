@@ -6,19 +6,19 @@
 //
 
 import SwiftUI
-import FirebaseCore
-import GoogleSignIn
+import ComposableArchitecture
 
 @main
 struct CenterApp: App {
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @State private var authManager = AuthManager.shared
+    
+    let store = Store(initialState: AppFeature.State()) {
+        AppFeature()
+    }
     
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .environment(authManager)
+            MainView(store: store)
         }
     }
 }

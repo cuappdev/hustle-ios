@@ -14,7 +14,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         
-        // grab client ID from firebase app
         guard let clientID = FirebaseApp.app()?.options.clientID else {
             print("Warning: Firebase client ID not found")
             return true
