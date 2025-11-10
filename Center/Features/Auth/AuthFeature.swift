@@ -117,8 +117,6 @@ struct AuthFeature {
             case .errorDismissed:
                 state.errorMessage = nil
                 return .none
-                
-                
             }
             
         }
