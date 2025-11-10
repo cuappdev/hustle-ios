@@ -11,6 +11,7 @@ struct DesignConstants {
     
     enum Colors {
         
+        // Defaults
         static let primary = Color(hex: 0x222222)
         static let tertiary = Color(hex: 0x2D2D2D)
         static let secondary = Color(hex: 0x7D8288)
@@ -20,6 +21,7 @@ struct DesignConstants {
         static let white = Color(hex: 0xFFFFFF)
         static let tint = Color(hex: 0xE1E1E1)
         
+        // Hustle
         static let hustleGreen = Color(hex: 0x004346)
         static let accentGreen = Color(hex: 0xD5EFB4)
         
