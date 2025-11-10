@@ -62,6 +62,7 @@ struct AuthFeature {
                         let user = try await authClient.signIn()
                         await send(.signInSucceeded(user))
                     } catch {
+                        // TODO: Handle error message properly, wait for potential error message design
                         await send(.signInFailed)
                     }
                 }
