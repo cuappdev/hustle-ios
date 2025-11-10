@@ -12,10 +12,9 @@ struct MainView: View {
     @Bindable var store: StoreOf<AppFeature>
     
     var body: some View {
+        
         Group {
-            switch store.auth.authState{
-            case .undefined:
-                ProgressView()
+            switch store.auth.authState {
             case .authenticated:
                 ContentView(store: store.scope(state: \.auth, action: \.auth))
             case .notAuthenticated:

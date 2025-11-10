@@ -15,31 +15,39 @@ struct AuthView: View {
         VStack{
             Spacer()
             
-            Button(action: { store.send(.signInButtonTapped) }) {
-                HStack {
-                    if store.isLoading {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                            .scaleEffect(0.8)
+            Group{
+                Image("AppLogo")
+                
+                Text("Welcome to \(Text("Hustle").bold())")
+                    .foregroundColor(DesignConstants.Colors.white)
+                    .font(DesignConstants.Fonts.h1)
+                
+                Text("Browse. Buy. Book")
+                    .foregroundColor(DesignConstants.Colors.white)
+                    .font(DesignConstants.Fonts.title1)
+                
+                
+                Spacer()
+                    .frame(height: 90)
+                
+                Button(action: { store.send(.signInButtonTapped) }) {
+                    HStack {
+                        Text("Log in with NetID")
+                            .foregroundColor(DesignConstants.Colors.hustleGreen)
+                            .font(DesignConstants.Fonts.title1Bold)
                     }
-                    Text("Log in with NetID")
-                        .foregroundColor(.white)
+                    .frame(width: 326, height: 51)
+                    .background(DesignConstants.Colors.accentGreen)
+                    .cornerRadius(15)
                 }
-                .frame(width: 200, height: 50)
-                .background(Color.blue)
-                .cornerRadius(12)
+                .disabled(store.isLoading)
             }
-            .disabled(store.isLoading)
+            .padding(.horizontal, 48)
             
             Spacer()
         }
-        .padding()
-        .alert("Error", isPresented: .constant(store.errorMessage != nil)) {
-            Button("OK") {
-                store.send(.errorDismissed)
-            }
-        } message: {
-            Text(store.errorMessage ?? "")
-        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(DesignConstants.Colors.hustleGreen)
     }
+    
 }
