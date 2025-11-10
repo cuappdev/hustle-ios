@@ -20,7 +20,6 @@ struct AuthFeature {
         var authState: AuthState = .notAuthenticated
         var user: FirebaseAuth.User?
         var isLoading = false
-        var errorMessage: String?
     }
     
     enum Action: Equatable {
@@ -30,10 +29,9 @@ struct AuthFeature {
         case authenticationSucceeded(FirebaseAuth.User)
         case authenticationFailed
         case signInSucceeded(FirebaseAuth.User)
-        case signInFailed(String)
+        case signInFailed
         case signOutSucceeded
-        case signOutFailed(String)
-        case errorDismissed
+        case signOutFailed
     }
     
     @Dependency(\.authClient) var authClient
@@ -59,13 +57,12 @@ struct AuthFeature {
                 }
             case .signInButtonTapped:
                 state.isLoading = true
-                state.errorMessage = nil
                 return .run { send in
                     do {
                         let user = try await authClient.signIn()
                         await send(.signInSucceeded(user))
                     } catch {
-                        await send(.signInFailed(error.localizedDescription))
+                        await send(.signInFailed)
                     }
                 }
             case .signOutbuttonTapped:
@@ -75,7 +72,7 @@ struct AuthFeature {
                         try await authClient.signOut()
                         await send(.signOutSucceeded)
                     } catch {
-                        await send(.signOutFailed(error.localizedDescription))
+                        await send(.signOutFailed)
                     }
                     
                 }
@@ -98,9 +95,8 @@ struct AuthFeature {
                 state.isLoading = false
                 return .none
                 
-            case let .signInFailed(errorMessage):
+            case .signInFailed:
                 state.isLoading = false
-                state.errorMessage = errorMessage
                 return .none
                 
             case .signOutSucceeded:
@@ -109,13 +105,8 @@ struct AuthFeature {
                 state.isLoading = false
                 return .none
                 
-            case let .signOutFailed(errorMessage):
+            case .signOutFailed:
                 state.isLoading = false
-                state.errorMessage = errorMessage
-                return .none
-                
-            case .errorDismissed:
-                state.errorMessage = nil
                 return .none
             }
             

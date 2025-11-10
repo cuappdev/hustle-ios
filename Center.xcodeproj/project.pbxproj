@@ -20,9 +20,22 @@
 		D0DDB55E2E7227AB00165825 /* Center.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Center.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		69F019092EC27771004D8CB1 /* Exceptions for "Center" folder in "Center" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Supporting/Info.plist,
+			);
+			target = D0DDB55D2E7227AB00165825 /* Center */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D0DDB5602E7227AB00165825 /* Center */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				69F019092EC27771004D8CB1 /* Exceptions for "Center" folder in "Center" target */,
+			);
 			path = Center;
 			sourceTree = "<group>";
 		};
