@@ -50,22 +50,3 @@ struct DesignConstants {
         
     }
 }
-
-//        → InstrumentSans-Regular
-//        → InstrumentSans-Bold
-//        → InstrumentSans-BoldItalic
-//        → HelveticaNeue
-//        → HelveticaNeue-Roman
-//        → HelveticaNeue-Italic
-//        → HelveticaNeue-UltraLight
-//        → HelveticaNeue-UltraLightItalic
-//        → HelveticaNeue-Thin
-//        → HelveticaNeue-ThinItalic
-//        → HelveticaNeue-Light
-//        → HelveticaNeue-LightItalic
-//        → HelveticaNeue-Medium
-//        → HelveticaNeue-MediumItalic
-//        → HelveticaNeue-Bold
-//        → HelveticaNeue-BoldItalic
-//        → HelveticaNeue-CondensedBold
-//        → HelveticaNeue-CondensedBlack
