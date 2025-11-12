@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 @main
-struct CenterApp: App {
+struct HustleApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     let store = Store(initialState: AppFeature.State()) {
