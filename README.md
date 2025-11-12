@@ -165,7 +165,7 @@ Don't forget to give the project a star! Thanks again!
 
 ### Top contributors:
 
-<a href="https://github.com/cuappdev/hustle-android/graphs/contributors">
+<a href="https://github.com/cuappdev/hustle-ios/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=cuappdev/hustle-ios" alt="contrib.rocks image" />
 </a>
 
