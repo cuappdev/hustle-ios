@@ -24,8 +24,6 @@ struct DesignConstants {
         // Hustle
         static let hustleGreen = Color(hex: 0x004346)
         static let accentGreen = Color(hex: 0xD5EFB4)
-        
-        
     }
     
     enum Fonts {

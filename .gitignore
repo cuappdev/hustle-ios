@@ -1,6 +1,7 @@
-/Center/Supporting/*
+/Hustle/Supporting/*
 *.DS_Store
 */xcuserdata/
-/Center.xcodeproj/project.xcworkspace/xcuserdata
+/Hustle.xcodeproj/project.xcworkspace/xcuserdata
 *.plist
-Center/Supporting/Info.plist
+Hustle/Supporting/Info.plist
+Hustle.xcodeproj/project.xcworkspace/xcuserdata/jay.xcuserdatad/UserInterfaceState.xcuserstate
