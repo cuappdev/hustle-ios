@@ -92,7 +92,8 @@
 * ![Xcode][Xcode Badge]
 * ![SwiftUI][SwiftUI Badge]
 * ![Firebase][Firebase Badge]
-* The Composable Architecture (TCA) by pointfreeco 
+* [The Composable Architecture (TCA) by Point-Free](https://github.com/pointfreeco/swift-composable-architecture)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
