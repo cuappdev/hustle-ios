@@ -29,7 +29,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/cuappdev/hustle-android">
+  <a href="https://github.com/cuappdev/hustle-ios">
     <!-- <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
     <img width="80" height="80" alt="image" src="https://github.com/user-attachments/assets/3a3cba8a-30b8-4bf6-ae0f-c687c4eb8af1" />
 
@@ -43,11 +43,11 @@
     <a href="https://www.notion.so/cornellappdev/Hustle-2600e873f4fa802d9ef7f052b92ff9ed"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/cuappdev/hustle-android">View Demo</a>
+    <a href="https://github.com/cuappdev/hustle-ios">View Demo</a>
     &middot;
-    <a href="https://github.com/cuappdev/hustle-android/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/cuappdev/hustle-ios/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
-    <a href="https://github.com/cuappdev/hustle-android/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/cuappdev/hustle-ios/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
   </p>
 </div>
 
