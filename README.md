@@ -108,7 +108,7 @@ Requires Xcode
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/cuappdev/ios-android.git
+   git clone https://github.com/cuappdev/hustle-ios.git
    ```
 2. Get the secrets.zip variables pinned in the `#hustle-ios` slack channel and drag them into your root directory
 3. Ask for access to the appdev gmail account from the leads and access the Firebase console --> Find the Hustle Project
