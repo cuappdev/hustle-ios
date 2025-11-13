@@ -29,13 +29,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+  <h3 align="center">Hustle</h3>
   <a href="https://github.com/cuappdev/hustle-ios">
     <!-- <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
     <img width="80" height="80" alt="image" src="https://github.com/user-attachments/assets/3a3cba8a-30b8-4bf6-ae0f-c687c4eb8af1" />
+    <br />
   <a href="https://www.notion.so/cornellappdev/Hustle-2600e873f4fa802d9ef7f052b92ff9ed"><strong>Explore the docs »</strong></a>
   </a>
 
-<h3 align="center">Hustle</h3>
 
   <p align="center">
     <br />
@@ -76,7 +77,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-    A central service marketplace, exclusively for Cornell students. Built for students looking to save money—and for those hustling, freelancing, or launching a business.
+A central service marketplace, exclusively for Cornell students. Built for students looking to save money—and for those hustling, freelancing, or launching a business.
     <br />
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
