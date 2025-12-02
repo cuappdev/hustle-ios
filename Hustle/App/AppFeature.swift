@@ -18,7 +18,8 @@ struct AppFeature {
     
     enum Action {
         case auth(AuthFeature.Action)
-        case onAppear
+        case main(MainContentFeature.Action)
+        
     }
     
     var body: some ReducerOf<Self> {
@@ -35,9 +36,6 @@ struct AppFeature {
             case .auth(.authenticationFailed):
                 state.isAuthenticated = false
                 return .none
-                
-            case .onAppear:
-                return .send(.auth(.startListening))
                 
             case .auth:
                 return .none

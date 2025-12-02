@@ -8,7 +8,7 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct MainView: View {
+struct MainContentView: View {
     @Bindable var store: StoreOf<AppFeature>
     
     var body: some View {
@@ -16,7 +16,7 @@ struct MainView: View {
         Group {
             switch store.auth.authState {
             case .authenticated:
-                ContentView(store: store.scope(state: \.auth, action: \.auth))
+                HomeView(store: store.scope(state: \.auth, action: \.auth))
             case .notAuthenticated:
                 AuthView(store: store.scope(state: \.auth, action: \.auth))
             }

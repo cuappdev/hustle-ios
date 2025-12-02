@@ -8,8 +8,8 @@
 import ComposableArchitecture
 import SwiftUI
 
-struct ContentView: View {
-    @Bindable var store: StoreOf<AuthFeature>
+struct HomeView: View {
+    // @Bindable var store: StoreOf<AuthFeature>
     
     var body: some View {
         VStack {
@@ -20,9 +20,13 @@ struct ContentView: View {
                 .background(DesignConstants.Colors.hustleGreen)
             
             Button("Sign out") {
-                store.send(.signOutbuttonTapped)
+                //store.send(.signOutbuttonTapped)
             }
         }
         .padding()
     }
+}
+
+#Preview {
+    HomeView()
 }
