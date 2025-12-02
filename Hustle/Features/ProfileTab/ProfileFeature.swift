@@ -5,4 +5,16 @@
 //  Created by Jay on 11/30/25.
 //
 
-import Foundation
+import ComposableArchitecture
+
+@Reducer
+struct ProfileFeature {
+    @ObservableState
+    struct State: Equatable {}
+    
+    enum Action: Equatable {}
+    
+    var body: some ReducerOf<Self> {
+        Reduce { _, _ in .none }
+    }
+}

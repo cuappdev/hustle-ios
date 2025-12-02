@@ -9,9 +9,10 @@ import ComposableArchitecture
 
 @Reducer
 struct MainContentFeature {
+    
     @ObservableState
     struct State: Equatable {
-        @BindingState var selectedTab: Tab = .home
+        var selectedTab: Tab = .home
         var home = HomeFeature.State()
         var learn = LearnFeature.State()
         var messages = MessagesFeature.State()

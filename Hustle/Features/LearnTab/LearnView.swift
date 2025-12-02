@@ -5,4 +5,31 @@
 //  Created by Jay on 11/30/25.
 //
 
-import Foundation
+import ComposableArchitecture
+import SwiftUI
+
+struct LearnView: View {
+    @Bindable var store: StoreOf<LearnFeature>
+    
+    var body: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "graduationcap.fill")
+                .font(.system(size: 40))
+                .foregroundColor(DesignConstants.Colors.hustleGreen)
+            Text("Learn tab coming soon")
+                .font(DesignConstants.Fonts.title2)
+                .foregroundColor(DesignConstants.Colors.primary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(DesignConstants.Colors.wash)
+    }
+}
+
+#Preview {
+    LearnView(
+        store: Store(
+            initialState: LearnFeature.State(),
+            reducer: { LearnFeature() }
+        )
+    )
+}
