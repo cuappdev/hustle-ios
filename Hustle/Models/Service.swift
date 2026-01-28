@@ -9,8 +9,10 @@ import Foundation
 
 struct Service: Equatable, Identifiable, Codable {
     let id: UUID
+    let category: String
     let providerPFP: String
     let providerName: String
+    let serviceImage: String
     let description: String
     let price: String
     let rating: Double

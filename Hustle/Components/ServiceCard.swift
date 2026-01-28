@@ -10,14 +10,17 @@ import SwiftUI
 struct ServiceCard: View {
     let service: Service
     var isFavorite: Bool = false
+    var cardWidth: CGFloat? = 178
+    var cardHeight: CGFloat? = 280
+    var imageHeight: CGFloat = 178
     
     var body: some View {
         VStack(alignment: .leading) {
             ZStack(alignment: .topTrailing) {
-                Image("lauren")
+                Image(service.serviceImage)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 178, height: 178)
+                    .frame(width: cardWidth, height: imageHeight)
                     .clipped()
                 
                 Image(systemName: isFavorite ? "heart.fill" : "heart")
@@ -35,22 +38,20 @@ struct ServiceCard: View {
                     
                     Text(service.providerName)
                         .font(DesignConstants.Fonts.title3Bold)
-                        .foregroundColor(DesignConstants.Colors.primary)
+                        .foregroundColor(DesignConstants.Colors.black)
                         .lineLimit(1)
                 }
                 
                 Text(service.description)
                     .font(DesignConstants.Fonts.title4)
-                    .lineLimit(2)
-                    .fixedSize(horizontal: false, vertical: true) // Forces text to grow vertically
+                    .foregroundColor(DesignConstants.Colors.black)
+                    .lineLimit(2, reservesSpace: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Spacer()
                 
                 HStack{
                     Text(service.price)
                         .font(DesignConstants.Fonts.title3)
-                        .foregroundColor(DesignConstants.Colors.primary)
+                        .foregroundColor(DesignConstants.Colors.black)
                     
                     Spacer()
                     
@@ -61,20 +62,22 @@ struct ServiceCard: View {
                         
                         Text(String(format: "%.1f", service.rating))
                             .font(DesignConstants.Fonts.subtitle1)
-                            .foregroundColor(DesignConstants.Colors.primary)
+                            .foregroundColor(DesignConstants.Colors.black)
                     }
                 }
-                .padding(.bottom, 16)
+                
             }
             .padding(.horizontal, 12)
+            .padding(.bottom, 16)
+            
         }
-        .frame(width: 178, height: 280, alignment: .top)
+        .frame(width: cardWidth, height: cardHeight, alignment: .top)
         .background(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .fill(DesignConstants.Colors.white)
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .stroke(DesignConstants.Colors.stroke, lineWidth: 1)
         )
         .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))

@@ -12,9 +12,16 @@ struct ProfileFeature {
     @ObservableState
     struct State: Equatable {}
     
-    enum Action: Equatable {}
+    enum Action: Equatable {
+        case logoutTapped
+    }
     
     var body: some ReducerOf<Self> {
-        Reduce { _, _ in .none }
+        Reduce { _, action in
+            switch action {
+            case .logoutTapped:
+                return .none
+            }
+        }
     }
 }

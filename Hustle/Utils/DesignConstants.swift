@@ -12,9 +12,9 @@ struct DesignConstants {
     enum Colors {
         
         // Defaults
-        static let primary = Color(hex: 0x222222)
+        static let black = Color(hex: 0x000000)
         static let tertiary = Color(hex: 0x2D2D2D)
-        static let secondary = Color(hex: 0x7D8288)
+        static let secondaryGrey = Color(hex: 0x636161)
         static let iconInactive = Color(hex: 0xE1E1E1)
         static let stroke = Color(hex: 0xE1E1E1)
         static let wash = Color(hex: 0x958F8F)

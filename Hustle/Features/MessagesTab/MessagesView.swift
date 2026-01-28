@@ -18,10 +18,10 @@ struct MessagesView: View {
                 .foregroundColor(DesignConstants.Colors.hustleGreen)
             Text("Messages coming soon")
                 .font(DesignConstants.Fonts.title2)
-                .foregroundColor(DesignConstants.Colors.primary)
+                .foregroundColor(DesignConstants.Colors.black)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(DesignConstants.Colors.wash)
+        .background(DesignConstants.Colors.white)
     }
 }
 

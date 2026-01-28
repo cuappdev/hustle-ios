@@ -17,15 +17,16 @@ struct CategoryButton: View {
             HStack(spacing: 8) {
                 Image(systemName: category.systemImage)
                     .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(DesignConstants.Colors.white)
                 Text(category.title)
-                    .font(DesignConstants.Fonts.title3)
+                    .font(DesignConstants.Fonts.title3Bold)
+                    .foregroundColor(DesignConstants.Colors.white)
                     .fixedSize(horizontal: true, vertical: false)
             }
             .padding(.vertical, 10)
             .padding(.horizontal, 14)
             .frame(height: 32)
-            .background(isSelected ? DesignConstants.Colors.hustleGreen : DesignConstants.Colors.white)
-            .foregroundStyle(isSelected ? DesignConstants.Colors.white : DesignConstants.Colors.hustleGreen)
+            .background(DesignConstants.Colors.hustleGreen)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(DesignConstants.Colors.hustleGreen, lineWidth: 1.2)

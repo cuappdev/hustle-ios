@@ -37,11 +37,18 @@ struct AppFeature {
             case .onAppear:
                 return .none
                 
+            case .main(.profile(.logoutTapped)):
+                return .send(.auth(.signOutbuttonTapped))
+                
             case .auth(.authenticationSucceeded):
                 state.isAuthenticated = true
                 return .none
                 
             case .auth(.authenticationFailed):
+                state.isAuthenticated = false
+                return .none
+                
+            case .auth(.signOutSucceeded):
                 state.isAuthenticated = false
                 return .none
                 
