@@ -9,7 +9,7 @@ import ComposableArchitecture
 import FirebaseAuth
 import GoogleSignIn
 
-public enum AuthState {
+public enum AuthState: Equatable {
     case authenticated, notAuthenticated
 }
 
@@ -20,9 +20,15 @@ struct AuthFeature {
         var authState: AuthState = .notAuthenticated
         var user: FirebaseAuth.User?
         var isLoading = false
+        
+        static func == (lhs: State, rhs: State) -> Bool {
+            lhs.authState == rhs.authState &&
+            lhs.user?.uid == rhs.user?.uid &&
+            lhs.isLoading == rhs.isLoading
+        }
     }
     
-    enum Action: Equatable {
+    enum Action {
         case startListening
         case signInButtonTapped
         case signOutbuttonTapped
@@ -114,4 +120,3 @@ struct AuthFeature {
         }
     }
 }
-

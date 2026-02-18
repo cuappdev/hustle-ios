@@ -13,11 +13,13 @@ struct AppFeature {
     @ObservableState
     struct State: Equatable {
         var auth = AuthFeature.State()
+        var main = MainContentFeature.State()
         var isAuthenticated = false
     }
     
     enum Action {
         case auth(AuthFeature.Action)
+        case main(MainContentFeature.Action)
         case onAppear
     }
     
@@ -26,8 +28,18 @@ struct AppFeature {
             AuthFeature()
         }
         
+        Scope(state: \.main, action: \.main) {
+            MainContentFeature()
+        }
+        
         Reduce { state, action in
             switch action {
+            case .onAppear:
+                return .none
+                
+            case .main(.profile(.logoutTapped)):
+                return .send(.auth(.signOutbuttonTapped))
+                
             case .auth(.authenticationSucceeded):
                 state.isAuthenticated = true
                 return .none
@@ -36,10 +48,14 @@ struct AppFeature {
                 state.isAuthenticated = false
                 return .none
                 
-            case .onAppear:
-                return .send(.auth(.startListening))
+            case .auth(.signOutSucceeded):
+                state.isAuthenticated = false
+                return .none
                 
             case .auth:
+                return .none
+                
+            case .main:
                 return .none
             }
         }

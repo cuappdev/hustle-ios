@@ -18,7 +18,7 @@ struct HustleApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView(store: store)
+            AppView(store: store)
         }
     }
 }
